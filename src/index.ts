@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-const getQuote = async (url: string) => {
+interface ServerData {
+    quote: string
+}
+
+const getQuote = async (url: string): Promise<ServerData> => {
     const result = await axios.get("https://api.kanye.rest")
     const { data: { quote } } = result
-    console.log(quote)
+    return quote
 }
 
 getQuote("https://api.kanye.rest")
